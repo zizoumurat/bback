@@ -16,7 +16,9 @@ public class Order: BaseEntity
     public NonconformityReasonEnum? NonconformityReason { get; set; } 
     public string NonconformityDetail { get; set; } 
     public string CompanyComments { get; set; } 
-    public string SupplierComments { get; set; } 
+    public string SupplierComments { get; set; }
+    public string InvoiceNumber { get; set; }
+    public string WaybillNumber { get; set; }
 
 
     public virtual ICollection<OrderItem> OrderItems { get; set; }

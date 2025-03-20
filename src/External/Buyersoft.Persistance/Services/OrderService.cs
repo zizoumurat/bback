@@ -199,6 +199,8 @@ public class OrderService : IOrderService
            .FirstAsync();
 
         order.Status = OrderStatusEnum.Delivered;
+        order.InvoiceNumber = Model.InvoiceNumber;
+        order.WaybillNumber = Model.WaybillNumber;
 
         _updateOrderRepository.Update(order);
 
