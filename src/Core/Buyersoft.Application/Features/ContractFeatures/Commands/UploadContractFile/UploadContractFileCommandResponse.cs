@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.ContractFeatures.Commands.UploadContractFile;
+public sealed record UploadContractFileCommandResponse(string message);

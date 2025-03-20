@@ -1,0 +1,278 @@
+[
+    {
+        "Name": "AĞAÇ VE AĞAÇ ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "AYDINLATMA VE IŞIKLI PANO ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "BETON-ÇİMENTO-KİREÇ VE ALÇI ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "BOYA-VERNİK-REÇİNE VE YAPI KİMYASALLARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "CAM VE CAM ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "DERİ-DERİ ÜRÜNLERİ VE DERİ GİYİM EŞYASI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "DÖKÜM SANAYİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "GIDA ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "İKLİMLENDİRME SİSTEMLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "KAĞIT VE KAĞIT ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "KAUÇUK VE KAUÇUK ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "KİMYASAL ÜRÜNLER",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "METAL ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "MOBİLYA VE OFİS MALZEMELERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "PLASTİK AMBALAJ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "TOPRAK VE SERAMİK ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "TARIM VE HAYVANCILIK",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "ASANSÖR VE YÜRÜYEN MERDİVEN",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "METALLER",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "DENİZ-HAVA-DEMİRYOLU ANA VE YAN SANAYİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "ELEKTRİK-ELEKTRONİK VE KABLO",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "ENDÜSTRİYEL YAĞLAR",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "ENERJİ ÜRETİM VE DEPOLAMA EKİPMANLARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "HIRDAVAT-KALIP-EL ALETLERİ VE BAĞLANTI EKİPMANLARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "IT VE TELEKOMÜNİKASYON EKİPMANLARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "İLAÇ-TIBBI CİHAZLAR VE MEDİKAL ÜRÜNLER",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "İŞ KIYAFETİ VE İŞ GÜVENLİĞİ EKİPMANLARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "KARA TAŞITLARI ANA SANAYİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "KARA TAŞITLARI YAN SANAYİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "KOMPOZİT ÜRÜNLER",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "KOZMETİK VE HİJYEN ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "MAKİNE-MAKİNE EKİPMANLARI VE PARÇALARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "MADEN VE MİNERALLER",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "MOTORLAR",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "ÖLÇÜM CİHAZLARI VE ELEKTRONİK PARÇALARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "PETROL VE PETROKİMYA ÜRÜNLERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "PLASTİK MALZEMELER",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "PROSES EKİPMANLARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "TEKSTİL VE AYAKKABI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "VİNÇ-FORKLİFT VE İŞ MAKİNELERİ",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "YANGIN SÖNDÜRME SİSTEMLERİ VE EKİPMANLARI",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "ENDÜSTRİYEL GAZLAR",
+        "MainCategoryId": 1
+    },
+    {
+        "Name": "NAKLİYE VE LOJİSTİK HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "LABORATUAR VE ÖLÇÜM HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "MÜHENDİSLİK VE TASARIM",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "VİNÇ-FORKLİFT-İŞ MAKİNESİ LEASİNG VE KİRALAMA",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "DANIŞMANLIK",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "METAL İŞLERİ HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "İNŞAAT VE MÜTEAHHİTLİK",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "BAKIM VE ONARIM",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "KURUMSAL BİNA VE TESİS YÖNETİMİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "ENDÜSTRİYEL HİJYEN",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "IT VE TELEKOMÜNİKASYON",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "ENDÜSTRİYEL YEMEK",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "ULAŞIM",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "SEYAHAT VE KONAKLAMA",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "ARAÇ KİRALAMA VE LEASİNG",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "ORGANİZASYON VE ETKİNLİK YÖNETİMİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "TAŞIT TANIMA SİSTEMLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "ATIK DÖNÜŞÜMÜ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "BASIM YAYIM HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "REKLAM VE TANITIM HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "MİMARLIK VE PEYZAJ HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "TEKSTİL VE KUMAŞ İŞLEME HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "DERİ VE KÜRK İŞLEME HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "OTOMOTİV BAKIM VE ONARIM HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "MOBİLYA BAKIM VE ONARIM HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "ENERJİ VE YAKIT HİZMETLERİ",
+        "MainCategoryId": 2
+    },
+    {
+        "Name": "SİGORTA VE REASÜRANS HİZMETLERİ",
+        "MainCategoryId": 2
+    }
+]

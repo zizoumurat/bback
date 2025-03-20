@@ -1,0 +1,7 @@
+﻿using Buyersoft.Application.Features.CompanyCompanySubCategoryFeatures.Commands.CreateCompanySubCategory;
+using Buyersoft.Application.Messaging;
+using Buyersoft.Domain.Dtos;
+
+namespace Buyersoft.Application.Features.CompanySubCategoryFeatures.Commands.CreateCompanySubCategory;
+
+public sealed record CreateCompanySubCategoryCommand(CompanySubCategoryDto CompanySubCategory) : ICommand<CreateCompanySubCategoryCommandResponse>;

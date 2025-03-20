@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.RequestGroupFeatures.Commands.CreateRequestGroup;
+public sealed record CreateRequestGroupCommandResponse(string message);

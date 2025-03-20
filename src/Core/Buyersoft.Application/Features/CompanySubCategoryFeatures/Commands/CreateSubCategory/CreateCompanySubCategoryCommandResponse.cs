@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.CompanyCompanySubCategoryFeatures.Commands.CreateCompanySubCategory;
+public sealed record CreateCompanySubCategoryCommandResponse(string message);

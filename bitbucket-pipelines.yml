@@ -1,0 +1,22 @@
+image: mcr.microsoft.com/dotnet/sdk:8.0
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build
+          script:
+            - chmod +x .cicd/*
+            - .cicd/build.sh
+          artifacts:
+            - release/**
+      - step:
+          name: Deploy
+          runs-on:
+            - self.hosted
+            - windows
+            - buyersoft
+          script:
+            - c:\windows\system32\inetsrv\appcmd.exe stop site api.buyersoft.com
+            - xcopy "release" "C:\inetpub\wwwroot\api.buyersoft.com" /h /i /c /k /e /r /y
+            - c:\windows\system32\inetsrv\appcmd.exe start site api.buyersoft.com
