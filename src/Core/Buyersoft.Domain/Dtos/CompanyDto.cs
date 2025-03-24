@@ -59,6 +59,13 @@ public class CompanyDetailDto
     public string Name { get; set; }
     public string Address { get; set; }
     public string LogoUrl { get; set; }
+    public byte[] LogoContent { get; set; }
+
+    public string ContactFirstName { get; set; }
+    public string ContactLastName { get; set; }
+    public string ContactPhoneNumber { get; set; }
+
+
     public string Website { get; set; }
     public string Email { get; set; }
     public string Phone { get; set; }
@@ -68,6 +75,8 @@ public class CompanyDetailDto
     public int DistrictId { get; set; }
     public bool IsSupplier { get; set; }
     public bool IsDeleted { get; set; }
+
+    public List<BankInfoDto> BankInfos { get; set; }
 }
 
 public class SupplierPortfolioDto

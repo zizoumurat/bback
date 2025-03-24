@@ -54,6 +54,7 @@ public class OrderService : IOrderService
 
         var query = _queryOrderRepository.GetList(x => x.OrderPreparation.CompanyId == companyId || x.OrderPreparation.Offer.CompanyId == companyId)
             .Where(x => x.Status == filter.status)
+            .Include(x => x.Document)
             .Include(x => x.OrderPreparation)
             .Include(x => x.OrderItems)
             .Select(x => new OrderPaginationDto()
@@ -84,7 +85,9 @@ public class OrderService : IOrderService
                 )).ToList(),
                 OrderCode = x.OrderCode,
                 OrderDate = x.OrderDate,
-                Status = x.Status
+                Status = x.Status,
+                DocumentUrl = x.Document != null ? Convert.ToBase64String(x.Document.FileContent) : "",
+                DocumentName = x.Document != null ? x.Document.FileName : ""
             });
 
         if (filter.status == OrderStatusEnum.OrderPending)
@@ -204,16 +207,16 @@ public class OrderService : IOrderService
 
         _updateOrderRepository.Update(order);
 
-       /* var users = await _userManager.Users.Where(x => x.CompanyId == order.OrderPreparation.Offer.CompanyId && x.RoleId == 3).ToListAsync();
+        /* var users = await _userManager.Users.Where(x => x.CompanyId == order.OrderPreparation.Offer.CompanyId && x.RoleId == 3).ToListAsync();
 
-        foreach (var user in users)
-        {
-            string message = $"Tedarikçi {order.OrderCode} Referans Numaralı Siparişin Statüsünü Güncelle";
+         foreach (var user in users)
+         {
+             string message = $"Tedarikçi {order.OrderCode} Referans Numaralı Siparişin Statüsünü Güncelle";
 
-            var notificationDto = new NotificationDto(0, user.Id, message, false);
+             var notificationDto = new NotificationDto(0, user.Id, message, false);
 
-            await _notificationService.AddAsync(notificationDto);
-        }
-       */
+             await _notificationService.AddAsync(notificationDto);
+         }
+        */
     }
 }

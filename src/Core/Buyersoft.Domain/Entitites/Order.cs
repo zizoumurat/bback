@@ -12,6 +12,9 @@ public class Order: BaseEntity
     public int OrderPreparationId { get; set; }
     public virtual OrderPreparation OrderPreparation { get; set; }
 
+    public int? DocumentId { get; set; }
+    public Document Document { get; set; }
+
     public OrderStatusEnum? NonconformityStatus { get; set; } 
     public NonconformityReasonEnum? NonconformityReason { get; set; } 
     public string NonconformityDetail { get; set; } 

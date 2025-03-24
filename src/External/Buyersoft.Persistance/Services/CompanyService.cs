@@ -37,7 +37,10 @@ public class CompanyService : ICompanyService
 
     public async Task<CompanyDetailDto> GetCurrentCompany(int id)
     {
-        var company = await _queryCompanyRepository.GetFirstAsync(x => x.Id == id).Include(x => x.Logo).FirstAsync();
+        var company = await _queryCompanyRepository.GetFirstAsync(x => x.Id == id)
+            .Include(x => x.Logo)
+            .Include(x => x.BankInfos)
+            .FirstAsync();
 
         return _mapper.Map<CompanyDetailDto>(company);
     }
@@ -58,15 +61,15 @@ public class CompanyService : ICompanyService
              .Skip((pagination.Page - 1) * pagination.PageSize)
               .Take(pagination.PageSize).MultiSort(pagination.sortByMultiName, pagination.sortByMultiOrder)
             .Select(x => new SupplierPortfolioDto()
-        {
-            Id = x.Supplier.Id,
-            Code = x.Supplier.SupplierCode,
-            Name = x.Supplier.Company.Name,
-            City = x.Supplier.Company.City.Name,
-            District = x.Supplier.Company.District.Name,
-            TaxAdministration = x.Supplier.Company.TaxAdministration,
-            Contact = x.Supplier.Company.ContactFirstName + " " + x.Supplier.Company.ContactLastName
-        }).ToListAsync();
+            {
+                Id = x.Supplier.Id,
+                Code = x.Supplier.SupplierCode,
+                Name = x.Supplier.Company.Name,
+                City = x.Supplier.Company.City.Name,
+                District = x.Supplier.Company.District.Name,
+                TaxAdministration = x.Supplier.Company.TaxAdministration,
+                Contact = x.Supplier.Company.ContactFirstName + " " + x.Supplier.Company.ContactLastName
+            }).ToListAsync();
 
         return new PaginatedList<SupplierPortfolioDto>(result, count, pagination.Page, pagination.PageSize);
     }

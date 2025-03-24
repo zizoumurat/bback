@@ -1,6 +1,7 @@
 ﻿using Buyersoft.Domain.Entitites;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
 
 namespace Buyersoft.Persistance.Data;
 
@@ -22,6 +23,12 @@ public static class OrderMapping
             .WithMany(c => c.Orders)
             .HasForeignKey(e => e.OrderPreparationId)
             .OnDelete(DeleteBehavior.Restrict);
+
+
+        builder.HasOne(o => o.Document)
+          .WithOne()
+          .HasForeignKey<Order>(o => o.DocumentId)
+          .OnDelete(DeleteBehavior.SetNull);
 
     }
 }

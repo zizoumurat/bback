@@ -6,10 +6,13 @@ public interface IDocumentService
 {
     Task<int> AddAsync(IFormFile file);
 
+    Task<int> AddAsync(byte[] fileContent, string fileName, string fileType);
+
     Task<int> UploadLogoAsync(IFormFile file);  
     Task<int> UploadDocument(IFormFile file);
     Task ChangeLogoAsync(IFormFile file, int Id);
     Task UpdateAsync(IFormFile file, int Id);
+
 
     Task DeleteAsync(int id);
 }

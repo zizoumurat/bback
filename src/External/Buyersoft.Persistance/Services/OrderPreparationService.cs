@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Buyersoft.Application.Features.Pagination;
 using Buyersoft.Application.Services;
 using Buyersoft.Domain.Dtos;
@@ -10,6 +9,12 @@ using Buyersoft.Domain.Repositories.OfferRepositories;
 using Buyersoft.Domain.Repositories.OrderPreparationRepositories;
 using Buyersoft.Domain.Repositories.RequestRepositories;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using MimeKit;
+using Buyersoft.Domain.Repositories.CompanyRepositories;
+using System.Linq;
 
 namespace Buyersoft.Persistance.Services;
 public class OrderPreparationService : IOrderPreparationService
@@ -21,6 +26,8 @@ public class OrderPreparationService : IOrderPreparationService
     private readonly IQueryRequestRepository _queryRequestRepository;
     private readonly IQueryOfferRepository _queryOfferRepository;
     private readonly ILocalizationService _localizationService;
+    private readonly IDocumentService _documentService;
+    private readonly ICompanyService _companyService;
     private readonly IMapper _mapper;
 
     public OrderPreparationService(IAddOrderPreparationRepository addOrderPreparationRepository,
@@ -30,7 +37,9 @@ public class OrderPreparationService : IOrderPreparationService
         ILocalizationService localizationService,
         IMapper mapper,
         IQueryRequestRepository queryRequestRepository,
-        IQueryOfferRepository queryOfferRepository)
+        IQueryOfferRepository queryOfferRepository,
+        IDocumentService documentService,
+        ICompanyService companyService)
     {
         _addOrderPreparationRepository = addOrderPreparationRepository;
         _updateOrderPreparationRepository = updateOrderPreparationRepository;
@@ -40,6 +49,8 @@ public class OrderPreparationService : IOrderPreparationService
         _mapper = mapper;
         _queryRequestRepository = queryRequestRepository;
         _queryOfferRepository = queryOfferRepository;
+        _documentService = documentService;
+        _companyService = companyService;
     }
 
     public async Task AddAsync(int companyId, int RequestId, int OfferId)
@@ -94,14 +105,25 @@ public class OrderPreparationService : IOrderPreparationService
             throw new Exception("EmptyOrder");
         }
 
+        var supplier = await _companyService.GetCurrentCompany(orderPreparation.Offer.CompanyId);
+        var company = await _companyService.GetCurrentCompany(1);
+
+        var orderCode = $"{DateTime.Now:MMdd}{new Random().Next(1000, 9999)}";
+
+        var orderFileContent = GeneratePurchaseOrderPdf(supplier, company, orderCode, Model.OrderItems.Sum(x => x.Quantity * x.UnitPrice), Model.OrderItems);
+
+
+        var orderFileId = await _documentService.AddAsync(orderFileContent, $"PurchaseOrder_{orderCode}.pdf", "application/pdf");
+
 
         var order = new Order()
         {
             OrderPreparationId = Model.OrderPreparationId,
-            OrderCode = $"{DateTime.Now:MMdd}{new Random().Next(1000, 9999)}",
+            OrderCode = orderCode,
             Status = OrderStatusEnum.OrderPending,
             TotalPrice = Model.OrderItems.Sum(x => x.Quantity * x.UnitPrice),
             OrderDate = DateTime.Now,
+            DocumentId = orderFileId,
             OrderItems = Model.OrderItems.Where(x => x.Quantity > 0).Select(x => new OrderItem()
             {
                 OfferDetailId = x.OfferDetailId,
@@ -185,7 +207,9 @@ public class OrderPreparationService : IOrderPreparationService
                         oi.UnitPrice,
                         oi.TotalPrice,
                         oi.Quantity
-                    )).ToList()
+                    )).ToList(),
+                    or.Document != null ? Convert.ToBase64String(or.Document.FileContent) : "",
+                    or.Document != null ? or.Document.FileName : ""
                 )).ToList()
             })
             .AsQueryable();
@@ -200,6 +224,122 @@ public class OrderPreparationService : IOrderPreparationService
 
         return new PaginatedList<OrderPreparationListDto>(items, count, pagination.Page, pagination.PageSize);
 
+    }
+
+    private byte[] GeneratePurchaseOrderPdf(CompanyDetailDto supplier, CompanyDetailDto company, string PO, decimal totalPrice, List<OrderItemCreateDto> OrderItems)
+    {
+        QuestPDF.Settings.License = LicenseType.Community;
+
+        byte[] logoContent = supplier.LogoContent;
+
+        var document = QuestPDF.Fluent.Document.Create(container =>
+        {
+            container.Page(page =>
+            {
+                page.Margin(30);
+
+                page.Header().Row(row =>
+                {
+                    row.RelativeItem().AlignLeft().Text("Satın Alma Siparişi").FontSize(20).Bold();
+
+                    row.ConstantItem(80).AlignRight().Height(50).Image(company.LogoContent).FitArea(); // Resmi ekleme
+                });
+
+                page.Content().Column(col =>
+                {
+                    col.Item().Row(row =>
+                    {
+                        row.RelativeItem()
+                            .AlignRight()
+                            .Column(column =>
+                            {
+                                column.Item().Text(company.Name).FontSize(18).Bold();
+                            });
+                    });
+
+
+
+                    col.Item().LineHorizontal(0.5f);
+
+                    col.Item().Row(row =>
+                    {
+                        row.RelativeItem(1).Border(1).Padding(10).Column(column =>
+                        {
+                            column.Item().Text("Tedarikçi Firma Fatura Bilgileri").Bold();
+                        });
+
+                        row.RelativeItem(1).Border(1).Padding(10).Column(column =>
+                        {
+                            column.Item().Text($"{PO} / {DateTime.Now.Date.ToString("dd/MM/yyyy")}");
+                            column.Item().Text(company.ContactFirstName + " " + company.ContactLastName);
+                            column.Item().Text(company.Email);
+                        });
+                    });
+
+                    col.Item().Row(row =>
+                    {
+                        row.RelativeItem(1).Border(1).Padding(10).Column(column =>
+                        {
+                            column.Item().Text(company.Address).Bold();
+                        });
+                    });
+
+                    col.Item().LineHorizontal(0.5f);
+
+                    col.Item().Table(table =>
+                    {
+                        table.ColumnsDefinition(columns =>
+                        {
+                            columns.ConstantColumn(50);  // Sipariş No
+                            columns.RelativeColumn();    // Ürün / Hizmet Tanımı
+                            columns.ConstantColumn(100); // Birim Fiyat / Miktar
+                            columns.ConstantColumn(120); // Net Birim Fiyat
+                        });
+
+                        table.Header(header =>
+                        {
+                            header.Cell().Element(CellStyle).Text("#").Bold();
+                            header.Cell().Element(CellStyle).Text("Ürün / Hizmet Tanımı").Bold();
+                            header.Cell().Element(CellStyle).Text("Birim Fiyat / Miktar").Bold();
+                            header.Cell().Element(CellStyle).Text("Net Birim Fiyat").Bold();
+                        });
+
+                        int orderNumber = 1;
+                        foreach (var item in OrderItems)
+                        {
+                            table.Cell().Element(CellStyle).Text(orderNumber.ToString());
+                            table.Cell().Element(CellStyle).Text(item.ProductDefinition);
+                            table.Cell().Element(CellStyle).Text($"{item.UnitPrice} TRY / {item.Quantity}");
+                            table.Cell().Element(CellStyle).Text($"{item.UnitPrice * item.Quantity} TRY");
+                            orderNumber++;
+                        }
+
+                        static IContainer CellStyle(IContainer container) =>
+                            container.BorderBottom(1).PaddingVertical(5).AlignCenter();
+                    });
+
+                    col.Item().LineHorizontal(0.5f);
+
+                    col.Item().Row(row =>
+                    {
+                        row.RelativeItem().Text("Toplam Net Tutar");
+                        row.RelativeItem().AlignRight().Text($"{totalPrice} (TRY)");
+                    });
+
+                    col.Item().LineHorizontal(0.5f);
+
+                    col.Item().Text("TR" + company.BankInfos.First().IBAN ?? "").Bold();
+                });
+
+                page.Footer()
+                    .AlignCenter()
+                    .Text("Buyersoft.");
+            });
+        });
+
+        using var memoryStream = new MemoryStream();
+        document.GeneratePdf(memoryStream);
+        return memoryStream.ToArray();
     }
 
 }

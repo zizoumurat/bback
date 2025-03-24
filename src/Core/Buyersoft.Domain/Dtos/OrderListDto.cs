@@ -2,7 +2,7 @@
 
 namespace Buyersoft.Domain.Dtos;
 
-public sealed record OrderListDto(int Id,  string OrderCode, decimal TotalPrice, OrderStatusEnum Status, DateTime OrderDate, List<OrderItemListDto> OrderItems);
+public sealed record OrderListDto(int Id,  string OrderCode, decimal TotalPrice, OrderStatusEnum Status, DateTime OrderDate, List<OrderItemListDto> OrderItems, string DocumentUrl, string DocumentName);
 
 public class OrderPaginationDto
 {
@@ -13,6 +13,8 @@ public class OrderPaginationDto
     public DateTime OrderDate { get; init; }
     public List<OrderItemListDto> OrderItems { get; init; } = new();
     public OrderPreparationListDto OrderPreparation { get; init; }
+    public string DocumentUrl { get; init; }
+    public string DocumentName { get; init; }
 }
 
 

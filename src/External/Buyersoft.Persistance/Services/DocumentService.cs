@@ -171,4 +171,20 @@ public class DocumentService : IDocumentService
 
         return await AddAsync(file);
     }
+
+    public async Task<int> AddAsync(byte[] fileContent, string fileName, string fileType)
+    {
+        Document document = new()
+        {
+            UploadDate = DateTime.Now,
+            FileContent = fileContent,
+            FileName = fileName,
+            FileSize = fileContent.Length,
+            FileType = fileType
+        };
+
+        await _addDocumentRepository.AddAsync(document);
+
+        return document.Id;
+    }
 }

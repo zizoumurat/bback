@@ -87,6 +87,11 @@ public class MappingProfile : Profile
            .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User.Name));
         #endregion
 
+        CreateMap<Order, OrderListDto>()
+           .ForMember(dest => dest.DocumentUrl, opt => opt.MapFrom(src => src.DocumentId != null ? Convert.ToBase64String(src.Document.FileContent) : ""))
+           .ForMember(dest => dest.DocumentName, opt => opt.MapFrom(src => src.DocumentId != null ? src.Document.FileName : ""));
+           
+
         #region Company
         CreateMap<SupplierCreateDto, Company>().ReverseMap();
         CreateMap<CompanyDto, Company>().ReverseMap();
@@ -94,7 +99,8 @@ public class MappingProfile : Profile
         CreateMap<UpdateCompanyDto, Company>()
             .ForMember(dest => dest.Logo, opt => opt.Ignore());
         CreateMap<Company, CompanyDetailDto>()
-            .ForMember(dest => dest.LogoUrl, opt => opt.MapFrom(src => Convert.ToBase64String(src.Logo.FileContent)));
+            .ForMember(dest => dest.LogoUrl, opt => opt.MapFrom(src => Convert.ToBase64String(src.Logo.FileContent)))
+            .ForMember(dest => dest.LogoContent, opt => opt.MapFrom(src => src.Logo != null ? src.Logo.FileContent : null));
         #endregion
 
         #region Currency
