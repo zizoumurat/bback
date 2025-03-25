@@ -4,7 +4,7 @@ namespace Buyersoft.Domain.Dtos;
 
 public sealed record SupplierActionCreateDto(
     int SupplierId,
-    SupplierActionTypeEnum Type,
+    NonconformityReasonEnum Type,
     string Subject,
     string Detail,
     DateTime DueDate

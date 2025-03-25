@@ -219,8 +219,10 @@ public static class RolePermissionMapping
         moduleName = "suppliers";
 
         string[] supplierPermissions = {
-            "supplierPortfolioManagement",
-            "supplierPerformanceManagement",
+             "customerPortfolioManagement",
+            "customerPerformanceManagement",
+            "receivables",
+
         };
 
         ModuleDto supplierModule = new()
@@ -239,9 +241,8 @@ public static class RolePermissionMapping
         moduleName = "customers";
 
         string[] customerPermissions = {
-            "customerPortfolioManagement",
-            "customerPerformanceManagement",
-            "receivables",
+            "supplierPortfolioManagement",
+            "supplierPerformanceManagement",
         };
 
         ModuleDto customerModule = new()

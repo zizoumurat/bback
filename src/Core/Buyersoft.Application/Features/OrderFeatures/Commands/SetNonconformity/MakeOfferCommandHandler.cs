@@ -10,7 +10,7 @@ public class SetNonconformityCommandHandler : ICommandHandler<SetNonconformityCo
     private readonly ILocalizationService _localizationService;
     private readonly ITokenService _tokenService;
     private readonly ITransactionManager _transactionManager;
-    
+
     public SetNonconformityCommandHandler(ILocalizationService localizationService, IOrderService orderService, ITokenService tokenService, ITransactionManager transactionManager)
     {
         _localizationService = localizationService;
@@ -24,10 +24,11 @@ public class SetNonconformityCommandHandler : ICommandHandler<SetNonconformityCo
         try
         {
             int companyId = _tokenService.GetCompanyIdByToken();
-            
+            int userId = _tokenService.GetUserIdByToken();
+
             await _transactionManager.BeginTransactionAsync();
 
-            await _orderService.SetNonconformityAsync(request.Model);
+            await _orderService.SetNonconformityAsync(companyId, userId, request.Model);
 
             await _transactionManager.CommitAsync();
 

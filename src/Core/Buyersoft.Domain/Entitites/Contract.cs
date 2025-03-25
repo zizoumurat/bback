@@ -27,3 +27,4 @@ public class Contract : BaseEntity
     public virtual ICollection<ContractComment> ContractComments { get; set; }
     public virtual ICollection<ContractApproval> ContractApprovals { get; set; }
 }
+

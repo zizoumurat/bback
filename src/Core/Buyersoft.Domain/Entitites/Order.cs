@@ -9,8 +9,13 @@ public class Order: BaseEntity
     public decimal TotalPrice { get; set; }
     public OrderStatusEnum Status { get; set; }
 
+    public DateTime? InvoiceDate { get; set; }
+
     public int OrderPreparationId { get; set; }
     public virtual OrderPreparation OrderPreparation { get; set; }
+
+    public int? PaymentListId { get; set; }
+    public virtual PaymentList PaymentList { get; set; }
 
     public int? DocumentId { get; set; }
     public Document Document { get; set; }

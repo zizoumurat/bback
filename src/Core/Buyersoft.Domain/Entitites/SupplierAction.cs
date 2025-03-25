@@ -8,7 +8,7 @@ public class SupplierAction : BaseEntity
     public int SupplierId { get; set; }
     public int CompanyId { get; set; }
     public int UserId { get; set; }
-    public SupplierActionTypeEnum Type { get; set; }
+    public NonconformityReasonEnum Type { get; set; }
     public string Subject { get; set; }
     public string Detail { get; set; }
     public string SupplierNotes { get; set; }

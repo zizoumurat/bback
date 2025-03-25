@@ -58,6 +58,8 @@ public class BaseDbContext : IdentityDbContext<User, Role, int>
     public DbSet<ProductDefinition> ProductDefinitions { get; set; }
     public DbSet<ServiceDefinition> ServiceDefinitions { get; set; }
     public DbSet<SupplierAction> SupplierActions { get; set; }
+    public DbSet<PaymentList> PaymentLists { get; set; }
+    public DbSet<PaymentListApproval> PaymentListApprovals { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
     {
@@ -117,6 +119,8 @@ public class BaseDbContext : IdentityDbContext<User, Role, int>
         builder.Entity<ProductDefinition>(ProductDefinitionMapping.OnModelCreating);
         builder.Entity<ServiceDefinition>(ServiceDefinitionMapping.OnModelCreating);
         builder.Entity<SupplierAction>(SupplierActionMapping.OnModelCreating);
+        builder.Entity<PaymentList>(PaymentListMapping.OnModelCreating);
+        builder.Entity<PaymentListApproval>(PaymentListApprovalMapping.OnModelCreating);
         RolePermissionMapping.OnModelCreating(builder.Entity<RolePermission>(), builder.Entity<Permission>());
     }
 }

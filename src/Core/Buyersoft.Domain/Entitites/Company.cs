@@ -45,5 +45,7 @@ public class Company : BaseEntity, SoftDeletableEntity
     public virtual ICollection<CompanyRequestGroup> CompanyRequestGroups { get; set; }
     public virtual ICollection<SupplierAction> SupplierActions { get; set; }
     public virtual ICollection<OrderPreparation> OrderPreparations { get; set; }
+    public virtual ICollection<PaymentList> PaymentLists { get; set; }
+
 
 }

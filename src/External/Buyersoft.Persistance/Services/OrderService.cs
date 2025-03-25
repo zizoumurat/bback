@@ -21,6 +21,7 @@ public class OrderService : IOrderService
     private readonly IQueryRequestRepository _queryRequestRepository;
     private readonly IQueryOfferRepository _queryOfferRepository;
     private readonly ILocalizationService _localizationService;
+    private readonly ISupplierActionService _supplierActionService;
     private readonly IMapper _mapper;
     private readonly INotificationService _notificationService;
     private readonly UserManager<User> _userManager;
@@ -34,7 +35,8 @@ public class OrderService : IOrderService
         IQueryRequestRepository queryRequestRepository,
         IQueryOfferRepository queryOfferRepository,
         INotificationService notificationService,
-        UserManager<User> userManager)
+        UserManager<User> userManager,
+        ISupplierActionService supplierActionService)
     {
         _addOrderRepository = addOrderRepository;
         _updateOrderRepository = updateOrderRepository;
@@ -46,14 +48,13 @@ public class OrderService : IOrderService
         _queryOfferRepository = queryOfferRepository;
         _notificationService = notificationService;
         _userManager = userManager;
+        _supplierActionService = supplierActionService;
     }
 
 
     public async Task<PaginatedList<OrderPaginationDto>> GetAllAsync(int companyId, int supplierId, OrderPreparationFilterDto filter, PageRequest pagination)
     {
-
         var query = _queryOrderRepository.GetList(x => x.OrderPreparation.CompanyId == companyId || x.OrderPreparation.Offer.CompanyId == companyId)
-            .Where(x => x.Status == filter.status)
             .Include(x => x.Document)
             .Include(x => x.OrderPreparation)
             .Include(x => x.OrderItems)
@@ -85,6 +86,8 @@ public class OrderService : IOrderService
                 )).ToList(),
                 OrderCode = x.OrderCode,
                 OrderDate = x.OrderDate,
+                InvoiceNumber = x.InvoiceNumber,
+                InvoiceDate = x.InvoiceDate,
                 Status = x.Status,
                 DocumentUrl = x.Document != null ? Convert.ToBase64String(x.Document.FileContent) : "",
                 DocumentName = x.Document != null ? x.Document.FileName : ""
@@ -92,7 +95,15 @@ public class OrderService : IOrderService
 
         if (filter.status == OrderStatusEnum.OrderPending)
         {
-            query = query.Where(x => x.Status == OrderStatusEnum.OrderPending || x.Status == OrderStatusEnum.InProduction || x.Status == OrderStatusEnum.Shipped);
+            query = query.Where(x => x.Status == OrderStatusEnum.OrderPending || x.Status == OrderStatusEnum.InProduction || x.Status == OrderStatusEnum.InShipment);
+        }
+        else if (filter.status == OrderStatusEnum.Shipped)
+        {
+            query = query.Where(x => x.Status == OrderStatusEnum.Delivered || x.Status == OrderStatusEnum.Shipped || x.Status == OrderStatusEnum.NonconformityReported);
+        }
+        else if (filter.status == OrderStatusEnum.Delivered)
+        {
+            query = query.Where(x => x.Status == OrderStatusEnum.Delivered || x.Status == OrderStatusEnum.NonconformityReported);
         }
         else
         {
@@ -111,7 +122,7 @@ public class OrderService : IOrderService
         return new PaginatedList<OrderPaginationDto>(items, count, pagination.Page, pagination.PageSize);
     }
 
-    public async Task SetNonconformityAsync(SetNonconformityDto Model)
+    public async Task SetNonconformityAsync(int companyId, int userId, SetNonconformityDto Model)
     {
         var order = await _queryOrderRepository.GetFirstAsync(x => x.Id == Model.Id)
             .Include(x => x.OrderPreparation)
@@ -119,13 +130,17 @@ public class OrderService : IOrderService
                         .Include(x => x.OrderPreparation)
                 .ThenInclude(x => x.Offer)
                     .ThenInclude(x => x.Company)
+                        .ThenInclude(x=>x.Supplier)
             .FirstAsync();
 
         order.NonconformityDetail = Model.Detail;
-        order.NonconformityReason = Model.Status;
+        order.NonconformityReason = Model.Type;
         order.Status = OrderStatusEnum.NonconformityReported;
 
         _updateOrderRepository.Update(order);
+
+        await _supplierActionService.AddAsync(companyId, 1, new SupplierActionCreateDto(order.OrderPreparation.Offer.Company.Supplier.Id, Model.Type, Model.Subject, Model.Detail, Model.DueDate));
+  
 
         var users = await _userManager.Users.Where(x => x.CompanyId == order.OrderPreparation.Offer.CompanyId && x.RoleId == 3).ToListAsync();
 
@@ -201,22 +216,22 @@ public class OrderService : IOrderService
                    .ThenInclude(x => x.Company)
            .FirstAsync();
 
-        order.Status = OrderStatusEnum.Delivered;
+        order.Status = Model.Type;
         order.InvoiceNumber = Model.InvoiceNumber;
         order.WaybillNumber = Model.WaybillNumber;
+        order.InvoiceDate = Model.InvoiceDate;
 
         _updateOrderRepository.Update(order);
 
-        /* var users = await _userManager.Users.Where(x => x.CompanyId == order.OrderPreparation.Offer.CompanyId && x.RoleId == 3).ToListAsync();
+        var users = await _userManager.Users.Where(x => x.CompanyId == order.OrderPreparation.Offer.CompanyId && x.RoleId == 3).ToListAsync();
 
-         foreach (var user in users)
-         {
-             string message = $"Tedarikçi {order.OrderCode} Referans Numaralı Siparişin Statüsünü Güncelle";
+        foreach (var user in users)
+        {
+            string message = $"Tedarikçi {order.OrderCode} Referans Numaralı Siparişin Statüsünü Güncelle";
 
-             var notificationDto = new NotificationDto(0, user.Id, message, false);
+            var notificationDto = new NotificationDto(0, user.Id, message, false);
 
-             await _notificationService.AddAsync(notificationDto);
-         }
-        */
+            await _notificationService.AddAsync(notificationDto);
+        }
     }
 }

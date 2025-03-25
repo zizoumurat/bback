@@ -4,6 +4,7 @@ using Buyersoft.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Buyersoft.Persistance.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250324084021_RolePermissionsEdit")]
+    partial class RolePermissionsEdit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112750,7 +112753,7 @@ namespace Buyersoft.Persistance.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             CompanyId = 1,
-                            ConcurrencyStamp = "9902a465-bd00-45ef-9135-639843af4a73",
+                            ConcurrencyStamp = "1f6b8f18-b5dd-4d90-9cce-a02f709d1610",
                             DepartmentId = 1,
                             Email = "keyuser@buyersoft.com",
                             EmailConfirmed = true,
@@ -112758,11 +112761,11 @@ namespace Buyersoft.Persistance.Migrations
                             Name = "Ahmet",
                             NormalizedEmail = "KEYUSER@BUYERSOFT.COM",
                             NormalizedUserName = "AHMET.YILMAZ",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH3XuuOw/sAA/n1LB2m4qTF2cStFzkmoOXQ+B9t4Bhfd40OrhMvy10bZ/N7LqV+SZw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENd7iKE/7x+6YwR95/LJlTVvwVKVyHmWRHHsHPD8jxuxbPFr4M5jSkxoENPvqtTMbA==",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpires = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RoleId = 1,
-                            SecurityStamp = "d61f689f-e882-4cd0-83db-ecfeb266706a",
+                            SecurityStamp = "01fd1d40-3343-4edb-918c-af5edf0fed3d",
                             Surname = "Yılmaz",
                             Title = "Genel Müdür",
                             TwoFactorEnabled = false,
@@ -113059,9 +113062,6 @@ namespace Buyersoft.Persistance.Migrations
                     b.Property<int?>("DocumentId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("InvoiceDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("InvoiceNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -113085,9 +113085,6 @@ namespace Buyersoft.Persistance.Migrations
                     b.Property<int>("OrderPreparationId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PaymentListId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -113108,8 +113105,6 @@ namespace Buyersoft.Persistance.Migrations
                         .HasFilter("[DocumentId] IS NOT NULL");
 
                     b.HasIndex("OrderPreparationId");
-
-                    b.HasIndex("PaymentListId");
 
                     b.ToTable("Orders", (string)null);
                 });
@@ -113207,71 +113202,6 @@ namespace Buyersoft.Persistance.Migrations
                     b.HasIndex("RequestId");
 
                     b.ToTable("OrderPreparations", (string)null);
-                });
-
-            modelBuilder.Entity("Buyersoft.Domain.Entitites.PaymentList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PaymentListCode")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasPrecision(18, 4)
-                        .HasColumnType("decimal(18,4)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("PaymentLists");
-                });
-
-            modelBuilder.Entity("Buyersoft.Domain.Entitites.PaymentListApproval", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Comment")
-                        .HasMaxLength(400)
-                        .HasColumnType("nvarchar(400)");
-
-                    b.Property<int>("PaymentListId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PaymentListId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PaymentListApprovals", (string)null);
                 });
 
             modelBuilder.Entity("Buyersoft.Domain.Entitites.Permission", b =>
@@ -140104,15 +140034,9 @@ namespace Buyersoft.Persistance.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Buyersoft.Domain.Entitites.PaymentList", "PaymentList")
-                        .WithMany()
-                        .HasForeignKey("PaymentListId");
-
                     b.Navigation("Document");
 
                     b.Navigation("OrderPreparation");
-
-                    b.Navigation("PaymentList");
                 });
 
             modelBuilder.Entity("Buyersoft.Domain.Entitites.OrderItem", b =>
@@ -140159,36 +140083,6 @@ namespace Buyersoft.Persistance.Migrations
                     b.Navigation("Offer");
 
                     b.Navigation("Request");
-                });
-
-            modelBuilder.Entity("Buyersoft.Domain.Entitites.PaymentList", b =>
-                {
-                    b.HasOne("Buyersoft.Domain.Entitites.Company", "Company")
-                        .WithMany("PaymentLists")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("Buyersoft.Domain.Entitites.PaymentListApproval", b =>
-                {
-                    b.HasOne("Buyersoft.Domain.Entitites.PaymentList", "PaymentList")
-                        .WithMany("PaymentListApprovals")
-                        .HasForeignKey("PaymentListId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Buyersoft.Domain.Entitites.Identity.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PaymentList");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Buyersoft.Domain.Entitites.ProductDefinition", b =>
@@ -140567,8 +140461,6 @@ namespace Buyersoft.Persistance.Migrations
 
                     b.Navigation("OrderPreparations");
 
-                    b.Navigation("PaymentLists");
-
                     b.Navigation("RequestGroups");
 
                     b.Navigation("Requests");
@@ -140693,11 +140585,6 @@ namespace Buyersoft.Persistance.Migrations
             modelBuilder.Entity("Buyersoft.Domain.Entitites.OrderPreparation", b =>
                 {
                     b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("Buyersoft.Domain.Entitites.PaymentList", b =>
-                {
-                    b.Navigation("PaymentListApprovals");
                 });
 
             modelBuilder.Entity("Buyersoft.Domain.Entitites.Permission", b =>

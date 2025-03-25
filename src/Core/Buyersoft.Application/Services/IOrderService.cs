@@ -6,7 +6,7 @@ using Buyersoft.Domain.Pagination;
 namespace Buyersoft.Application.Services;
 public interface IOrderService
 {
-    Task SetNonconformityAsync(SetNonconformityDto Model);
+    Task SetNonconformityAsync(int companyId, int userId, SetNonconformityDto Model);
     Task CancelOrderAsync(CancelOrderDto Model);
     Task DeliveredOrderAsync(DeliveredOrderDto Model);
 
