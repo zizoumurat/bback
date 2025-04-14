@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.MainCategoryFeatures.Commands.UpdateMainCategory;
+public sealed record UpdateMainCategoryCommandResponse(string message);

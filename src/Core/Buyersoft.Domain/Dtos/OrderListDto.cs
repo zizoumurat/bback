@@ -1,0 +1,27 @@
+﻿using Buyersoft.Domain.Enums;
+
+namespace Buyersoft.Domain.Dtos;
+
+public sealed record OrderListDto(int Id, string OrderCode, decimal TotalPrice, OrderStatusEnum Status, DateTime OrderDate, List<OrderItemListDto> OrderItems, string DocumentUrl, string DocumentName);
+
+public class OrderPaginationDto
+{
+    public int Id { get; init; }
+    public string OrderCode { get; init; }
+    public string InvoiceNumber { get; init; }
+    public DateTime? InvoiceDate { get; init; }
+    public decimal TotalPrice { get; init; }
+    public OrderStatusEnum Status { get; init; }
+    public DateTime OrderDate { get; init; }
+    public List<OrderItemListDto> OrderItems { get; init; } = new();
+    public OrderPreparationListDto OrderPreparation { get; init; }
+    public string DocumentUrl { get; init; }
+    public string DocumentName { get; init; }
+}
+
+
+public sealed record SetNonconformityDto(int Id, string Detail, string Subject, DateTime DueDate, NonconformityReasonEnum Type);
+public sealed record ChangeOrderStatusDto(int Id, string InvoiceNumber, DateTime? InvoiceDate, string WaybillNumber, OrderStatusEnum Type);
+public sealed record CancelOrderDto(int Id);
+public sealed record DeliveredOrderDto(int Id);
+

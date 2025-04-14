@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.ProductDefinitionFeatures.Commands.CreateProductDefinition;
+public sealed record CreateProductDefinitionCommandResponse(string message);

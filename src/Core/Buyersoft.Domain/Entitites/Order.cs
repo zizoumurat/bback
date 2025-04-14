@@ -1,0 +1,36 @@
+﻿using Buyersoft.Domain.Enums;
+
+namespace Buyersoft.Domain.Entitites;
+
+public class Order: BaseEntity
+{
+    public DateTime OrderDate { get; set; }
+    public string OrderCode { get; set; }
+    public decimal TotalPrice { get; set; }
+    public OrderStatusEnum Status { get; set; }
+
+    public DateTime? InvoiceDate { get; set; }
+
+    public int OrderPreparationId { get; set; }
+    public virtual OrderPreparation OrderPreparation { get; set; }
+
+    public int? PaymentListId { get; set; }
+    public virtual PaymentList PaymentList { get; set; }
+
+    public int? DocumentId { get; set; }
+    public Document Document { get; set; }
+
+    public OrderStatusEnum? NonconformityStatus { get; set; } 
+    public NonconformityReasonEnum? NonconformityReason { get; set; } 
+    public string NonconformityDetail { get; set; } 
+    public string CompanyComments { get; set; } 
+    public string SupplierComments { get; set; }
+    public string InvoiceNumber { get; set; }
+    public string WaybillNumber { get; set; }
+    public string ShippingAddress { get; set; }
+    public string Incoterms { get; set; }
+    public DateTime DesiredShippingDate { get; set; }
+
+    public virtual ICollection<OrderItem> OrderItems { get; set; }
+    public virtual ICollection<Return> Returns { get; set; }
+}

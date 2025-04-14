@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.ServiceDefinitionFeatures.Commands.UpdateServiceDefinition;
+public sealed record UpdateServiceDefinitionCommandResponse(string message);

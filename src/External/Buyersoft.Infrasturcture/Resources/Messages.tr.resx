@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApprovalChainCreated" xml:space="preserve">
+    <value>Onay zinciri başarıyla oluşturuldu.</value>
+  </data>
+  <data name="ApprovalChainDeleted" xml:space="preserve">
+    <value>Onay zinciri başarıyla silindi</value>
+  </data>
+  <data name="DepartmentCreated" xml:space="preserve">
+    <value>Departman kaydı başarıyla oluşturuldu.</value>
+  </data>
+  <data name="DepartmentDeleted" xml:space="preserve">
+    <value>Departman kaydı başarıyla silindi.</value>
+  </data>
+  <data name="DepartmentUpdated" xml:space="preserve">
+    <value>Departman kaydı başarıyla güncellendi.</value>
+  </data>
+  <data name="DuplicateEntity" xml:space="preserve">
+    <value>Bu kayıt zaten mevcut.</value>
+  </data>
+  <data name="ExistingAvailableLimitError" xml:space="preserve">
+    <value>Bütçe limiti azaltılamaz</value>
+  </data>
+  <data name="InvalidFileType" xml:space="preserve">
+    <value>Resim formatı yalnızca jpg ve png olmalıdır.</value>
+  </data>
+  <data name="NotFoundEntity" xml:space="preserve">
+    <value>Kayıt Bulunamadı!</value>
+  </data>
+  <data name="PasswordResetLinkSentMessage" xml:space="preserve">
+    <value>Şifre yenileme bağlantısı e-posta adresinize gönderildi.</value>
+  </data>
+  <data name="PasswordResetSuccessMessage" xml:space="preserve">
+    <value>Şifreniz başarıyla yenilendi.</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>Zorunlu alanları doldurmalısınız.</value>
+  </data>
+  <data name="UserNotFoundByEmail" xml:space="preserve">
+    <value>Girdiğiniz e-posta adresiyle eşleşen bir hesap bulunamadı. Lütfen e-posta adresinizi kontrol edip tekrar deneyin.</value>
+  </data>
+  <data name="RoleUpdated" xml:space="preserve">
+    <value>Rol güncelleme işlemi başarılı!</value>
+  </data>
+  <data name="BankInfoCreated" xml:space="preserve">
+    <value>Banka bilgileri başarıyla eklendi!</value>
+  </data>
+  <data name="ApprovalChainUpdated" xml:space="preserve">
+    <value>Onay zinciri başarıyla güncellendi.</value>
+  </data>
+  <data name="BankInfoDeleted" xml:space="preserve">
+    <value>Banka bilgileri başarıyla silindi.</value>
+  </data>
+  <data name="BankInfoUpdated" xml:space="preserve">
+    <value>Banka bilgileri başarıyla güncellendi.</value>
+  </data>
+  <data name="BudgetCreated" xml:space="preserve">
+    <value>Bütçe başarıyla oluşturuldu.</value>
+  </data>
+  <data name="BudgetDeleted" xml:space="preserve">
+    <value>Bütçe başarıyla silindi.</value>
+  </data>
+  <data name="BudgetUpdated" xml:space="preserve">
+    <value>Bütçe başarıyla güncellendi.</value>
+  </data>
+  <data name="CategoryCreated" xml:space="preserve">
+    <value>Kategori başarıyla oluşturuldu.</value>
+  </data>
+  <data name="CategoryDeleted" xml:space="preserve">
+    <value>Kategori başarıyla silindi.</value>
+  </data>
+  <data name="CategoryUpdated" xml:space="preserve">
+    <value>Kategori başarıyla güncellendi.</value>
+  </data>
+  <data name="CompanyUpdated" xml:space="preserve">
+    <value>Şirket bilgileri başarıyla güncellendi.</value>
+  </data>
+  <data name="CurrencyParameterCreated" xml:space="preserve">
+    <value>Döviz parametresi başarıyla eklendi.</value>
+  </data>
+  <data name="CurrencyParameterDeleted" xml:space="preserve">
+    <value>Döviz parametresi başarıyla silindi.</value>
+  </data>
+  <data name="CurrencyParameterUpdated" xml:space="preserve">
+    <value>Döviz parametresi başarıyla güncellendi.</value>
+  </data>
+  <data name="LocationCreated" xml:space="preserve">
+    <value>Konum başarıyla eklendi.</value>
+  </data>
+  <data name="LocationDeleted" xml:space="preserve">
+    <value>Konum başarıyla silindi.</value>
+  </data>
+  <data name="LocationUpdated" xml:space="preserve">
+    <value>Konum başarıyla güncellendi.</value>
+  </data>
+  <data name="MainCategoryCreated" xml:space="preserve">
+    <value>Ana kategori başarıyla oluşturuldu.</value>
+  </data>
+  <data name="MainCategoryDeleted" xml:space="preserve">
+    <value>Ana kategori başarıyla silindi.</value>
+  </data>
+  <data name="MainCategoryUpdated" xml:space="preserve">
+    <value>Ana kategori başarıyla güncellendi.</value>
+  </data>
+  <data name="OfferLimitCreated" xml:space="preserve">
+    <value>Teklif limiti başarıyla eklendi.</value>
+  </data>
+  <data name="OfferLimitDeleted" xml:space="preserve">
+    <value>Teklif limiti başarıyla silindi.</value>
+  </data>
+  <data name="OfferLimitUpdated" xml:space="preserve">
+    <value>Teklif limiti başarıyla güncellendi.</value>
+  </data>
+  <data name="ProductDefinitionCreated" xml:space="preserve">
+    <value>Ürün tanımı başarıyla oluşturuldu.</value>
+  </data>
+  <data name="ProductDefinitionDeleted" xml:space="preserve">
+    <value>Ürün tanımı başarıyla silindi.</value>
+  </data>
+  <data name="ProductDefinitionUpdated" xml:space="preserve">
+    <value>Ürün tanımı başarıyla güncellendi.</value>
+  </data>
+  <data name="RequestCreated" xml:space="preserve">
+    <value>Talep başarıyla oluşturuldu.</value>
+  </data>
+  <data name="RequestDeleted" xml:space="preserve">
+    <value>Talep başarıyla silindi.</value>
+  </data>
+  <data name="RequestUpdated" xml:space="preserve">
+    <value>Talep başarıyla güncellendi.</value>
+  </data>
+  <data name="RequestGroupCreated" xml:space="preserve">
+    <value>Talep grubu başarıyla oluşturuldu.</value>
+  </data>
+  <data name="RoleCreated" xml:space="preserve">
+    <value>Rol başarıyla oluşturuldu.</value>
+  </data>
+  <data name="RoleDeleted" xml:space="preserve">
+    <value>Rol başarıyla silindi.</value>
+  </data>
+  <data name="ServiceDefinitionCreated" xml:space="preserve">
+    <value>Hizmet tanımı başarıyla eklendi.</value>
+  </data>
+  <data name="ServiceDefinitionDeleted" xml:space="preserve">
+    <value>Hizmet tanımı başarıyla silindi.</value>
+  </data>
+  <data name="ServiceDefinitionUpdated" xml:space="preserve">
+    <value>Hizmet tanımı başarıyla güncellendi.</value>
+  </data>
+  <data name="SubCategoryCreated" xml:space="preserve">
+    <value>Alt kategori başarıyla eklendi.</value>
+  </data>
+  <data name="SystemNotificationCreated" xml:space="preserve">
+    <value>Sistem bildirimi başarıyla oluşturuldu.</value>
+  </data>
+  <data name="SystemNotificationDeleted" xml:space="preserve">
+    <value>Sistem bildirimi başarıyla silindi.</value>
+  </data>
+  <data name="SystemNotificationUpdated" xml:space="preserve">
+    <value>Sistem bildirimi başarıyla güncellendi.</value>
+  </data>
+  <data name="TemplateCreated" xml:space="preserve">
+    <value>Şablon başarıyla oluşturuldu.</value>
+  </data>
+  <data name="TemplateDeleted" xml:space="preserve">
+    <value>Şablon başarıyla silindi.</value>
+  </data>
+  <data name="TemplateUpdated" xml:space="preserve">
+    <value>Şablon başarıyla güncellendi.</value>
+  </data>
+  <data name="UserCreated" xml:space="preserve">
+    <value>Kullanıcı başarıyla oluşturuldu.</value>
+  </data>
+  <data name="UserDeleted" xml:space="preserve">
+    <value>Kullanıcı başarıyla silindi.</value>
+  </data>
+  <data name="UserUpdated" xml:space="preserve">
+    <value>Kullanıcı başarıyla güncellendi.</value>
+  </data>
+  <data name="AssignedAsRequestOwner" xml:space="preserve">
+    <value>Talep Yetkilisi Oldunuz</value>
+  </data>
+  <data name="PasswordUpdated" xml:space="preserve">
+    <value>Şifreniz güncellendi</value>
+  </data>
+  <data name="MadeOffer" xml:space="preserve">
+    <value>Teklifiniz başarıyla iletilmiştir.</value>
+  </data>
+  <data name="OfferAddedToShortList" xml:space="preserve">
+    <value>Teklif kısa listeye eklendi.</value>
+  </data>
+  <data name="ComprasionTableCreated" xml:space="preserve">
+    <value>Karşılaştırma tablosu başarıyla oluşturuldu.</value>
+  </data>
+  <data name="AllocationCreated" xml:space="preserve">
+    <value>Alokasyon başarıyla oluşturuldu.</value>
+  </data>
+  <data name="RevisionRequestSubmitted" xml:space="preserve">
+    <value>Revize talebiniz tedarikçiye başarıyla iletilmiştir.</value>
+  </data>
+  <data name="OfferRejected" xml:space="preserve">
+    <value>Teklif Talebi Reddedildi</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="AddedToShortList" xml:space="preserve">
+    <value>Teklif kısa listeye eklendi.</value>
+  </data>
+  <data name="RemovedToShortList" xml:space="preserve">
+    <value>Teklif kısa listeden çıkartıldı.</value>
+  </data>
+  <data name="BidCollectionProcessEnded" xml:space="preserve">
+    <value>Teklif toplama süreci sona ermiş.</value>
+  </data>
+  <data name="PendingRevisionRequest" xml:space="preserve">
+    <value>Onay bekleyen bir revize talebiniz bulunmaktadır.</value>
+  </data>
+  <data name="ReverseAuctionAlreadyCreated" xml:space="preserve">
+    <value>Ters Açık Artırma Oturumu daha önce oluşturulmuş.</value>
+  </data>
+  <data name="ReverseAuctionCreated" xml:space="preserve">
+    <value>Ters Açık Artırma Oturumu başarıyla oluşturuldu.</value>
+  </data>
+</root>

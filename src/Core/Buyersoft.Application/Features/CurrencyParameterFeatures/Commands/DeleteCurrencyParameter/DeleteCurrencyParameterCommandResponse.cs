@@ -1,0 +1,3 @@
+﻿namespace Buyersoft.Application.Features.CurrencyParameterFeatures.Commands.DeleteCurrencyParameter;
+
+public sealed record DeleteCurrencyParameterCommandResponse(string message);

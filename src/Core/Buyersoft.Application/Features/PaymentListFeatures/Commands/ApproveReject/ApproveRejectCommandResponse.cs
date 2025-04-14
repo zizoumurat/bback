@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.PaymentListFeatures.Commands.CreatePaymentList;
+public sealed record ApproveRejectCommandResponse(string message);

@@ -1,0 +1,3 @@
+﻿namespace Buyersoft.Application.Features.ProductDefinitionFeatures.Commands.DeleteProductDefinition;
+
+public sealed record DeleteProductDefinitionCommandResponse(string message);

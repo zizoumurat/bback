@@ -1,0 +1,13 @@
+﻿using Buyersoft.Domain.Entitites;
+using Buyersoft.Domain.Repositories.CurrencyParameterRepositories;
+using Buyersoft.Domain.Repositories.SupplierPortfolioRepositories;
+using Buyersoft.Persistance.Context;
+using Buyersoft.Persistance.Repositories.Generic;
+
+namespace Buyersoft.Persistance.Repositories.SupplierPortfolioRepositories;
+public class AddCompanySupplierPortfolioRepository : AddRepository<CompanySupplierPortfolio>, IAddCompanySupplierPortfolioRepository
+{
+    public AddCompanySupplierPortfolioRepository(BaseDbContext context) : base(context)
+    {
+    }
+}

@@ -1,0 +1,37 @@
+﻿using Buyersoft.Domain.Entitites;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
+
+namespace Buyersoft.Persistance.Data;
+
+public static class OrderMapping
+{
+    public static void OnModelCreating(EntityTypeBuilder<Order> builder)
+    {
+        builder.ToTable("Orders");
+
+        builder.HasKey(e => e.Id);
+
+        builder.Property(e => e.OrderPreparationId).IsRequired();
+        builder.Property(e => e.OrderCode).IsRequired().HasMaxLength(40);
+        builder.Property(e => e.ShippingAddress).IsRequired().HasMaxLength(250);
+        builder.Property(e => e.Incoterms).IsRequired().HasMaxLength(40);
+        builder.Property(e => e.TotalPrice).IsRequired().HasPrecision(18, 4);
+        builder.Property(e => e.OrderDate).IsRequired();
+        builder.Property(e => e.DesiredShippingDate).IsRequired();
+
+
+        builder.HasOne(e => e.OrderPreparation)
+            .WithMany(c => c.Orders)
+            .HasForeignKey(e => e.OrderPreparationId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+
+        builder.HasOne(o => o.Document)
+          .WithOne()
+          .HasForeignKey<Order>(o => o.DocumentId)
+          .OnDelete(DeleteBehavior.SetNull);
+
+    }
+}

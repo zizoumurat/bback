@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.ServiceDefinitionFeatures.Commands.CreateServiceDefinition;
+public sealed record CreateServiceDefinitionCommandResponse(string message);

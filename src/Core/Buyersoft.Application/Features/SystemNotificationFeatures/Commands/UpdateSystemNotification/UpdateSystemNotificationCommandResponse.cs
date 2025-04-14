@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.SystemNotificationFeatures.Commands.UpdateSystemNotification;
+public sealed record UpdateSystemNotificationCommandResponse(string message);

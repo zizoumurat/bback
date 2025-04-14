@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.SupplierActionFeatures.Commands.UpdateSupplierAction;
+public sealed record UpdateSupplierActionCommandResponse(string message);

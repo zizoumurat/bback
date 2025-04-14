@@ -1,0 +1,2 @@
+﻿namespace Buyersoft.Application.Features.ReverseAuctionFeatures.Commands.StartReverseAuction;
+public sealed record StartReverseAuctionCommandResponse(string message);
