@@ -1,3 +1,0 @@
-﻿namespace Buyersoft.Application.Features.SystemNotificationFeatures.Commands.DeleteSystemNotification;
-
-public sealed record DeleteSystemNotificationCommandResponse(string message);

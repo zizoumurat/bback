@@ -1,3 +1,0 @@
-﻿namespace Buyersoft.Application.Features.ServiceDefinitionFeatures.Commands.DeleteServiceDefinition;
-
-public sealed record DeleteServiceDefinitionCommandResponse(string message);

@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.RequestFeatures.Commands.CreateReverseAuction;
-public sealed record CreateReverseAuctionCommandResponse(string message);

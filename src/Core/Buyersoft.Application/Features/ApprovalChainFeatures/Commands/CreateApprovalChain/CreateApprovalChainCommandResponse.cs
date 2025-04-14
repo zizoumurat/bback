@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.ApprovalChainFeatures.Commands.CreateApprovalChain;
-public sealed record CreateApprovalChainCommandResponse(string message);

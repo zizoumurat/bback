@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.RequestFeatures.Commands.CancelBidCollection;
-public sealed record CancelBidCollectionCommandResponse(string message);

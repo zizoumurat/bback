@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.MainCategoryFeatures.Commands.CreateMainCategory;
-public sealed record CreateMainCategoryCommandResponse(string message);

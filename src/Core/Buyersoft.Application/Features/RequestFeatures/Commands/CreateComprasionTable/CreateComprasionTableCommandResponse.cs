@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.RequestFeatures.Commands.CreateComprasionTable;
-public sealed record CreateComprasionTableCommandResponse(string message);

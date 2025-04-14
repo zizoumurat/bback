@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.CurrencyParameterFeatures.Commands.CreateCurrencyParameter;
-public sealed record CreateCurrencyParameterCommandResponse(string message);

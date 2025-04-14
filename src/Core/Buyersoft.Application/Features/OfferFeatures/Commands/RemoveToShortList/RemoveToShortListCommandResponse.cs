@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.OfferLimitFeatures.Commands.RemoveToShortList;
-public sealed record RemoveToShortListCommandResponse(string message);

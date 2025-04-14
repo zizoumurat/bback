@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.ProductDefinitionFeatures.Commands.UpdateProductDefinition;
-public sealed record UpdateProductDefinitionCommandResponse(string message);

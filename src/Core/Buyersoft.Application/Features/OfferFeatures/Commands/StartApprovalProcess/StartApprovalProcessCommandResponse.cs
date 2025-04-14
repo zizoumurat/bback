@@ -1,2 +1,0 @@
-﻿namespace Buyersoft.Application.Features.OfferLimitFeatures.Commands.StartApprovalProcess;
-public sealed record StartApprovalProcessCommandResponse(string message);
